@@ -3,7 +3,7 @@ Summary:    Service Model for Web Runtime
 Version:    1.0.5
 Release:    1
 Group:      Development/Libraries
-License:    Apache License, Version 2.0
+License:    Apache-2.0 and BSD-2-Clause
 URL:        N/A
 Source0:    %{name}-%{version}.tar.gz
 
@@ -70,6 +70,7 @@ make %{?jobs:-j%jobs}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/license
 cp LICENSE %{buildroot}/usr/share/license/%{name}
+cat LICENSE.BSD >> %{buildroot}/usr/share/license/%{name}
 
 cd cmake_build_tmp
 %make_install
