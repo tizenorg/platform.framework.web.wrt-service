@@ -1,0 +1,52 @@
+[
+        {
+                "name":"tizen.filesystem",
+                "lib":"/usr/lib/tizen-extensions-crosswalk/libtizen_filesystem.so",
+                "entry_points": []
+        },
+        {
+                "name":"tizen.messageport",
+                "lib":"/usr/lib/tizen-extensions-crosswalk/libtizen_messageport.so",
+                "entry_points": []
+        },
+        {
+                "name":"tizen",
+                "lib":"/usr/lib/tizen-extensions-crosswalk/libtizen.so",
+                "entry_points": []
+        },
+        {
+                "name":"tizen.datacontrol",
+                "lib":"/usr/lib/tizen-extensions-crosswalk/libtizen_datacontrol.so",
+                "entry_points": []
+        },
+        {
+                "name":"tizen.application",
+                "lib":"/usr/lib/tizen-extensions-crosswalk/libtizen_application.so",
+                "entry_points": ["tizen.ApplicationControl","tizen.ApplicationControlData"]
+        },
+        {
+                "name":"tizen.time",
+                "lib":"/usr/lib/tizen-extensions-crosswalk/libtizen_time.so",
+                "entry_points": ["tizen.TZDate","tizen.TimeDuration"]
+        },
+        {
+                "name":"xwalk.utils",
+                "lib":"/usr/lib/tizen-extensions-crosswalk/libtizen_utils.so",
+                "entry_points": []
+        },
+        {
+                "name":"tizen.systeminfo",
+                "lib":"/usr/lib/tizen-extensions-crosswalk/libtizen_systeminfo.so",
+                "entry_points": []
+        },
+        {
+                "name":"tizen.package",
+                "lib":"/usr/lib/tizen-extensions-crosswalk/libtizen_package.so",
+                "entry_points": []
+        },
+        {
+                "name":"tizen.alarm",
+                "lib":"/usr/lib/tizen-extensions-crosswalk/libtizen_alarm.so",
+                "entry_points": ["tizen.AlarmRelative","tizen.AlarmAbsolute"]
+        }
+]

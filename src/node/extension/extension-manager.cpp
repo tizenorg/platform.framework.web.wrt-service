@@ -25,6 +25,7 @@ const char kExtensionDir[] = "/usr/lib64/tizen-extensions-crosswalk";
 #else
 const char kExtensionDir[] = "/usr/lib/tizen-extensions-crosswalk";
 #endif
+const char kExtensionServiceDir[] = "/usr/lib/tizen-extensions-crosswalk-service";
 const char kExtensionPrefix[] = "lib";
 const char kExtensionSuffix[] = ".so";
 const char kExtensionMetadataSuffix[] = ".json";
@@ -82,15 +83,15 @@ void ExtensionManager::RegisterExtensionsByMetadata(const std::string& metafile_
 }
 
 void ExtensionManager::RegisterExtensionsByMetadata() {
-  std::string extension_path(kExtensionDir);
-  extension_path.append("/");
-  extension_path.append("*");
-  extension_path.append(kExtensionMetadataSuffix);
+  std::string extension_service_path(kExtensionServiceDir);
+  extension_service_path.append("/");
+  extension_service_path.append("*");
+  extension_service_path.append(kExtensionMetadataSuffix);
 
-  SLOGD("Register Extension directory path : [%s]", extension_path.c_str());
+  SLOGD("Register Extension service directory path : [%s]", extension_service_path.c_str());
 
   glob_t glob_result;
-  glob(extension_path.c_str(), GLOB_TILDE, NULL, &glob_result);
+  glob(extension_service_path.c_str(), GLOB_TILDE, NULL, &glob_result);
   for (unsigned int i = 0; i < glob_result.gl_pathc; ++i) {
     RegisterExtensionsByMetadata(glob_result.gl_pathv[i]);
   }

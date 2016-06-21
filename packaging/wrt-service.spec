@@ -11,6 +11,8 @@ Source0:    %{name}-%{version}.tar.gz
 ExcludeArch: %{arm} %ix86 x86_64
 %endif
 
+%define crosswalk_extensions_service tizen-extensions-crosswalk-service
+
 BuildRequires: cmake
 BuildRequires: pkgconfig(dlog)
 BuildRequires: pkgconfig(glib-2.0)
@@ -72,6 +74,9 @@ mkdir -p %{buildroot}/usr/share/license
 cp LICENSE %{buildroot}/usr/share/license/%{name}
 cat LICENSE.BSD >> %{buildroot}/usr/share/license/%{name}
 
+mkdir -p %{buildroot}%{_libdir}/%{crosswalk_extensions_service}
+cp plugins.json %{buildroot}%{_libdir}/%{crosswalk_extensions_service}
+
 cd cmake_build_tmp
 %make_install
 
@@ -88,3 +93,4 @@ rm -rf %{buildroot}
 %{_datadir}/license/%{name}
 %attr(755,root,root) %{_bindir}/wrt-service
 %{_libdir}/node/wrt-service/*.node
+%{_libdir}/%{crosswalk_extensions_service}/plugins.json
