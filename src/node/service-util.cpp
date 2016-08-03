@@ -24,7 +24,6 @@
 #include <node.h>
 #include <v8.h>
 #include <memory>
-
 #include <security-manager.h>
 
 #include <boost/filesystem/path.hpp>
@@ -91,9 +90,9 @@ static void InitAce(const std::string & /*appid*/){
     //wrt::common::AccessControl::GetInstance()->InitAppPrivileges(appid);
 }
 
-static void SetPrivilege(const std::string& pkgid){
+static void SetPrivilege(const std::string& appid){
     SECURE_LOGD("Set privilege : %s", pkgid.c_str());
-    int ret = security_manager_set_process_label_from_appid(pkgid.c_str());
+    int ret = security_manager_set_process_label_from_appid(appid.c_str());
     if (ret != SECURITY_MANAGER_SUCCESS) {
         LOGE("error security_manager_set_process_label_from_appid : (%d)", ret);
     }
@@ -126,12 +125,12 @@ static void getStartScript(const FunctionCallbackInfo<Value>& args){
 static void setPrivilege(const FunctionCallbackInfo<Value>& args){
     Isolate* isolate = Isolate::GetCurrent();
     HandleScope scope(isolate);
-    if( args.Length() < 2 ){
+    if( args.Length() < 1 ){
         LOGE("No enough arguments");
         return;
     }
-    std::string pkgid(*String::Utf8Value(args[0]->ToString()));
-    SetPrivilege(pkgid);
+    std::string appid(*String::Utf8Value(args[0]->ToString()));
+    SetPrivilege(appid);
 }
 
 static void init(Handle<Object> target) {

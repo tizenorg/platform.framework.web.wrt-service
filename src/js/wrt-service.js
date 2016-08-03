@@ -243,7 +243,7 @@
 
     //Change App privilege
     var serviceUtil = require('wrt-service/serviceutil.node');
-    serviceUtil.setPrivilege(appid.split('.')[0]);
+    serviceUtil.setPrivilege(appid);
 
     // change cwd
     process.chdir(packagePath);
